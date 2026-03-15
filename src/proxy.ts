@@ -29,7 +29,8 @@ export async function proxy(request: NextRequest) {
 
   const isProtected = request.nextUrl.pathname.startsWith('/dashboard') ||
                       request.nextUrl.pathname.startsWith('/parcours') ||
-                      request.nextUrl.pathname.startsWith('/bourses')
+                      request.nextUrl.pathname.startsWith('/bourses') ||
+                      request.nextUrl.pathname.startsWith('/pont')
 
   const isAuthPage = request.nextUrl.pathname.startsWith('/connexion') ||
                      request.nextUrl.pathname.startsWith('/inscription')

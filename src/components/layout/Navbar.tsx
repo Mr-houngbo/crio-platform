@@ -30,8 +30,8 @@ export default function Navbar() {
           <Link href="/bourses" className="text-sm text-orange-800 hover:text-orange-600 transition">
             Bourses
           </Link>
-          <Link href="/#pont" className="text-sm text-orange-800 hover:text-orange-600 transition">
-            Pont académique
+          <Link href="/pont" className="text-sm text-orange-800 hover:text-orange-600 transition">
+            Tes maths valent de l or
           </Link>
         </div>
 

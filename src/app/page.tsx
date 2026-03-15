@@ -113,30 +113,22 @@ export default async function Home() {
       </section>
 
       {/* Pont académique */}
-      <section id="pont" className="bg-white border-y border-orange-100 py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl font-bold text-orange-900 mb-2">Le Pont Académique</h2>
-          <p className="text-orange-700 mb-8">
-            Tu te demandes à quoi servent tes cours ? Voilà les réponses.
+     {/* Pont académique teaser */}
+      <section className="bg-white border-y border-orange-100 py-16">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <div className="text-4xl mb-4">🔗</div>
+          <h2 className="text-2xl font-bold text-orange-900 mb-3">
+            Tes maths valent de l or
+          </h2>
+          <p className="text-orange-700 max-w-xl mx-auto mb-6">
+            Découvre comment chaque matière de ton cursus MIA se transforme en compétence digitale recherchée sur le marché.
           </p>
-          <div className="grid md:grid-cols-3 gap-4">
-            {[
-              { cours: 'Algèbre linéaire', metier: 'Machine Learning', desc: 'Régression, réseaux de neurones' },
-              { cours: 'Probabilités & Stats', metier: 'Data Science', desc: 'Modèles prédictifs, A/B testing' },
-              { cours: 'Algorithmique', metier: 'Développement', desc: 'Optimisation, complexité' },
-              { cours: 'Bases de données', metier: 'Full Stack', desc: 'SQL, conception de schémas' },
-              { cours: 'Réseaux informatiques', metier: 'DevOps / Sécu', desc: 'Infrastructure, firewalls' },
-              { cours: 'C/C++', metier: 'Systèmes embarqués', desc: 'IoT, firmware' },
-            ].map((item) => (
-              <div key={item.cours} className="bg-orange-50 rounded-xl p-4">
-                <div className="text-xs font-medium text-orange-500 mb-1">Cours UAC</div>
-                <div className="font-semibold text-orange-900 mb-2">{item.cours}</div>
-                <div className="text-xs text-orange-400 mb-1">Métier</div>
-                <div className="text-sm font-medium text-orange-700">{item.metier}</div>
-                <div className="text-xs text-orange-500 mt-1">{item.desc}</div>
-              </div>
-            ))}
-          </div>
+          <Link
+            href="/pont"
+            className="inline-block bg-orange-600 hover:bg-orange-700 text-white font-medium px-6 py-3 rounded-xl transition"
+          >
+            Explorer les connexions
+          </Link>
         </div>
       </section>
 

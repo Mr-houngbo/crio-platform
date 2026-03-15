@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import Navbar from '@/components/layout/Navbar'
 
 export const metadata: Metadata = {
   title: 'CRIO — Plateforme d\'apprentissage',
@@ -13,7 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body>{children}</body>
+      <body className="bg-orange-50 min-h-screen">
+        <Navbar />
+        <main>{children}</main>
+      </body>
     </html>
   )
 }

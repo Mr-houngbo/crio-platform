@@ -9,7 +9,9 @@ export async function proxy(request: NextRequest) {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        getAll() { return request.cookies.getAll() },
+        getAll() {
+          return request.cookies.getAll()
+        },
         setAll(cookiesToSet) {
           cookiesToSet.forEach(({ name, value }) =>
             request.cookies.set(name, value)
@@ -33,11 +35,15 @@ export async function proxy(request: NextRequest) {
                      request.nextUrl.pathname.startsWith('/inscription')
 
   if (isProtected && !user) {
-    return NextResponse.redirect(new URL('/connexion', request.url))
+    const url = request.nextUrl.clone()
+    url.pathname = '/connexion'
+    return NextResponse.redirect(url)
   }
 
   if (isAuthPage && user) {
-    return NextResponse.redirect(new URL('/dashboard', request.url))
+    const url = request.nextUrl.clone()
+    url.pathname = '/dashboard'
+    return NextResponse.redirect(url)
   }
 
   return supabaseResponse

@@ -1,0 +1,25 @@
+<svg width="220" height="70" viewBox="0 0 220 70" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="35" cy="42" rx="22" ry="19" fill="#ea580c"/>
+  <ellipse cx="35" cy="45" rx="14" ry="12" fill="#fed7aa"/>
+  <path d="M55 47 Q67 39 72 45 Q67 51 55 49 Z" fill="#c2410c"/>
+  <ellipse cx="15" cy="23" rx="3.5" ry="9" fill="#f97316" transform="rotate(-20 15 23)"/>
+  <circle cx="12" cy="14" r="3" fill="#fb923c"/>
+  <ellipse cx="23" cy="19" rx="3" ry="8" fill="#ea580c" transform="rotate(-5 23 19)"/>
+  <circle cx="22" cy="11" r="2.5" fill="#f97316"/>
+  <ellipse cx="55" cy="23" rx="3.5" ry="9" fill="#f97316" transform="rotate(20 55 23)"/>
+  <circle cx="58" cy="14" r="3" fill="#fb923c"/>
+  <ellipse cx="47" cy="19" rx="3" ry="8" fill="#ea580c" transform="rotate(5 47 19)"/>
+  <circle cx="48" cy="11" r="2.5" fill="#f97316"/>
+  <circle cx="27" cy="37" r="8" fill="white"/>
+  <circle cx="43" cy="37" r="8" fill="white"/>
+  <circle cx="27" cy="37" r="5" fill="#1a1a1a"/>
+  <circle cx="43" cy="37" r="5" fill="#1a1a1a"/>
+  <circle cx="29" cy="35" r="2" fill="white"/>
+  <circle cx="45" cy="35" r="2" fill="white"/>
+  <circle cx="27" cy="37" r="2" fill="#ea580c"/>
+  <circle cx="43" cy="37" r="2" fill="#ea580c"/>
+  <path d="M28 47 Q35 53 42 47" fill="none" stroke="#9a3412" stroke-width="1.5" stroke-linecap="round"/>
+  <ellipse cx="24" cy="58" rx="5" ry="3.5" fill="#c2410c" transform="rotate(-20 24 58)"/>
+  <ellipse cx="46" cy="58" rx="5" ry="3.5" fill="#c2410c" transform="rotate(20 46 58)"/>
+  <text x="88" y="35" fill="#1a1a1a" font-size="30" font-weight="800" font-family="system-ui,sans-serif" letter-spacing="-1" dominant-baseline="central">CRIO</text>
+</svg>

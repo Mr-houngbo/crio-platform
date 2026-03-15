@@ -55,7 +55,7 @@ export default function FormulaireProfi({ profile }: { profile: Profile | null }
             <label className="block text-sm font-medium text-orange-900 mb-1">Filiere</label>
             <select
               value={form.filiere}
-              onChange={e => setForm({ ...form, filiere: e.target.value })}
+              onChange={e => setForm({ ...form, filiere: e.target.value as 'MIA' | 'PC' })}
               className="w-full border border-orange-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
             >
               <option value="MIA">MIA</option>
@@ -66,7 +66,7 @@ export default function FormulaireProfi({ profile }: { profile: Profile | null }
             <label className="block text-sm font-medium text-orange-900 mb-1">Niveau</label>
             <select
               value={form.niveau}
-              onChange={e => setForm({ ...form, niveau: e.target.value })}
+              onChange={e => setForm({ ...form, niveau: e.target.value as 'L1' | 'L2' | 'L3' | 'Master' | 'Doctorat' })}
               className="w-full border border-orange-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
             >
               <option value="L1">L1</option>

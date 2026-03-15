@@ -28,9 +28,11 @@ export async function proxy(request: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser()
 
   const isProtected = request.nextUrl.pathname.startsWith('/dashboard') ||
-                      request.nextUrl.pathname.startsWith('/parcours') ||
-                      request.nextUrl.pathname.startsWith('/bourses') ||
-                      request.nextUrl.pathname.startsWith('/pont')
+                    request.nextUrl.pathname.startsWith('/parcours') ||
+                    request.nextUrl.pathname.startsWith('/bourses') ||
+                    request.nextUrl.pathname.startsWith('/pont') ||
+                    request.nextUrl.pathname.startsWith('/alumni') ||
+                    request.nextUrl.pathname.startsWith('/profil')
 
   const isAuthPage = request.nextUrl.pathname.startsWith('/connexion') ||
                      request.nextUrl.pathname.startsWith('/inscription')

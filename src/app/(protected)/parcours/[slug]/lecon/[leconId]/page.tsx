@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
+import BoutonCompletion from '@/components/ui/BoutonCompletion'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
@@ -39,10 +40,11 @@ function ContenuLecon({ lecon }: { lecon: any }) {
       <div className="p-8">
         <p className="text-orange-700 mb-4">Lis attentivement cet article.</p>
         
-          <a href={lecon.contenu_url}
+        <a href={lecon.contenu_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-xl transition">
+          className="inline-block bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-xl transition"
+        >
           Lire l article
         </a>
       </div>
@@ -62,6 +64,8 @@ export default async function LeconPage({ params }: Props) {
   const { slug, leconId } = await params
   const supabase = await createClient()
 
+  const { data: { user } } = await supabase.auth.getUser()
+
   const { data: lecon } = await supabase
     .from('lecons')
     .select('*, modules(titre, parcours_id, parcours(titre, slug))')
@@ -69,6 +73,15 @@ export default async function LeconPage({ params }: Props) {
     .single()
 
   if (!lecon) notFound()
+
+  const { data: progression } = await supabase
+    .from('progression')
+    .select('completee')
+    .eq('user_id', user?.id ?? '')
+    .eq('lecon_id', leconId)
+    .single()
+
+  const dejaCComplete = progression?.completee ?? false
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
@@ -90,6 +103,11 @@ export default async function LeconPage({ params }: Props) {
         <span>{lecon.duree_minutes} min</span>
         <span>•</span>
         <span className="capitalize">{lecon.type}</span>
+        {dejaCComplete && (
+          <span className="bg-green-50 text-green-700 px-2 py-0.5 rounded-full text-xs">
+            Complete
+          </span>
+        )}
       </div>
 
       <div className="bg-white rounded-2xl border border-orange-100 overflow-hidden mb-8">
@@ -100,9 +118,11 @@ export default async function LeconPage({ params }: Props) {
         <Link href={`/parcours/${slug}`} className="text-sm text-orange-600 hover:underline">
           Retour au parcours
         </Link>
-        <button className="bg-orange-600 hover:bg-orange-700 text-white font-medium px-6 py-3 rounded-xl transition">
-          Marquer comme complete
-        </button>
+        <BoutonCompletion
+          leconId={leconId}
+          slug={slug}
+          dejaCComplete={dejaCComplete}
+        />
       </div>
 
     </div>

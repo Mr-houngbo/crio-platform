@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import BoutonCompletion from '@/components/ui/BoutonCompletion'
+import LeconSuivante from '@/components/ui/LeconSuivante'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
@@ -238,11 +239,19 @@ export default async function LeconPage({ params }: Props) {
             Retour au parcours
           </Link>
           
-          <BoutonCompletion
-            leconId={leconId}
-            slug={slug}
-            dejaComplete={dejaComplete}
-          />
+          <div className="flex items-center gap-3">
+            {dejaComplete && (
+              <LeconSuivante
+                leconId={leconId}
+                slug={slug}
+              />
+            )}
+            <BoutonCompletion
+              leconId={leconId}
+              slug={slug}
+              dejaComplete={dejaComplete}
+            />
+          </div>
         </div>
 
       </div>

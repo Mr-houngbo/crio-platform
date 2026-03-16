@@ -23,11 +23,11 @@ export default function LeconSuivante({ leconId, slug, onComplete }: Props) {
         // Récupérer la leçon actuelle avec son module
         const { data: currentLecon } = await supabase
           .from('lecons')
-          .select('module_id, ordre, modules!inner(parcours_id)')
+          .select('module_id, ordre, modules!inner(parcours_id, ordre)')
           .eq('id', leconId)
           .single()
 
-        if (!currentLecon) return
+        if (!currentLecon || !currentLecon.modules) return
 
         // Chercher la leçon suivante dans le même module
         const { data: nextInModule } = await supabase

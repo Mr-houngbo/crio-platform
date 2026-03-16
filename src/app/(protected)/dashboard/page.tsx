@@ -403,7 +403,10 @@ export default async function DashboardPage() {
                       <div className="flex items-start justify-between mb-4">
                         <div className="text-3xl mb-2">
                           {parcours.slug === 'web-full-stack' ? '🌐' : 
-                           parcours.slug === 'data-science' ? '📊' : '🚀'}
+                           parcours.slug === 'data-science' ? '📊' :
+                           parcours.slug === 'graphic-design' ? '🎨' :
+                           parcours.slug === 'community-manager' ? '📱' :
+                           parcours.slug === 'montage-video' ? '🎬' : '🚀'}
                         </div>
                         {estEnCours && (
                           <span className="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded-lg font-medium">

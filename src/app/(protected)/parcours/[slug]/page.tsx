@@ -76,6 +76,9 @@ export default async function ParcourDetailPage({ params }: Props) {
   const parcoursIcons: Record<string, string> = {
     'web-full-stack': '🌐',
     'data-science': '📊',
+    'graphic-design': '🎨',
+    'community-manager': '📱',
+    'montage-video': '🎬',
   }
 
   const typeIcons: Record<string, string> = {

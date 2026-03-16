@@ -20,16 +20,25 @@ export default function LeconSuivante({ leconId, slug, onComplete }: Props) {
       try {
         const supabase = createClient()
         
-        // Récupérer la leçon actuelle avec son module
+        // Étape 1: Récupérer la leçon actuelle avec son module
         const { data: currentLecon } = await supabase
           .from('lecons')
-          .select('module_id, ordre, modules!inner(parcours_id, ordre)')
+          .select('module_id, ordre')
           .eq('id', leconId)
           .single()
 
-        if (!currentLecon || !currentLecon.modules) return
+        if (!currentLecon) return
 
-        // Chercher la leçon suivante dans le même module
+        // Étape 2: Récupérer les infos du module
+        const { data: currentModule } = await supabase
+          .from('modules')
+          .select('parcours_id, ordre')
+          .eq('id', currentLecon.module_id)
+          .single()
+
+        if (!currentModule) return
+
+        // Étape 3: Chercher la leçon suivante dans le même module
         const { data: nextInModule } = await supabase
           .from('lecons')
           .select('*')
@@ -42,17 +51,17 @@ export default function LeconSuivante({ leconId, slug, onComplete }: Props) {
         if (nextInModule) {
           setNextLecon(nextInModule)
         } else {
-          // Chercher la première leçon du module suivant
-          const { data: nextModuleData } = await supabase
+          // Étape 4: Chercher la première leçon du module suivant
+          const { data: nextModules } = await supabase
             .from('modules')
             .select('*')
-            .eq('parcours_id', currentLecon.modules.parcours_id)
-            .gt('ordre', currentLecon.modules.ordre)
+            .eq('parcours_id', currentModule.parcours_id)
+            .gt('ordre', currentModule.ordre)
             .order('ordre', { ascending: true })
             .limit(1)
 
-          if (nextModuleData && nextModuleData.length > 0) {
-            const nextModule = nextModuleData[0]
+          if (nextModules && nextModules.length > 0) {
+            const nextModule = nextModules[0]
             const { data: firstLeconNextModule } = await supabase
               .from('lecons')
               .select('*')

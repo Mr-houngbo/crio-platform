@@ -49,7 +49,7 @@ export default async function ParcourDetailPage({ params }: Props) {
 
   // Calculer le temps total
   const totalMinutes = modules?.reduce((acc, m) => 
-    acc + (m.lecons?.reduce((leconAcc, lecon: any) => leconAcc + (lecon.duree_minutes ?? 0), 0) ?? 0), 0
+   acc + (m.lecons?.reduce((leconAcc: number, lecon: any) => leconAcc + (lecon.duree_minutes ?? 0), 0) ?? 0), 0
   ) ?? 0
 
   const formatDuration = (minutes: number) => {
@@ -275,7 +275,7 @@ export default async function ParcourDetailPage({ params }: Props) {
             const moduleTotal = moduleLecons.length
             const modulePercentage = moduleTotal > 0 ? Math.round((moduleCompleted / moduleTotal) * 100) : 0
             const isModuleComplete = moduleCompleted === moduleTotal && moduleTotal > 0
-            const moduleDuration = moduleLecons.reduce((acc, l: any) => acc + (l.duree_minutes ?? 0), 0)
+            const moduleDuration = moduleLecons.reduce((acc: number, l: any) => acc + (l.duree_minutes ?? 0), 0)
 
             return (
               <div key={module.id} className="bg-white rounded-2xl border border-orange-100 overflow-hidden hover:shadow-lg transition-all duration-300">

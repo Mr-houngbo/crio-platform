@@ -48,22 +48,22 @@ export default async function BourseListePage() {
     .order('date_cloture')
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-12">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12">
 
-      <div className="mb-10">
-        <h1 className="text-3xl font-bold text-orange-900 mb-2">Bourses & Opportunités</h1>
-        <p className="text-orange-700">
+      <div className="mb-8 md:mb-10">
+        <h1 className="text-2xl md:text-3xl font-bold text-orange-900 mb-2">Bourses & Opportunités</h1>
+        <p className="text-sm md:text-base text-orange-700">
           Toutes les bourses taillées pour les étudiants MIA de la FAST UAC. Clique sur une bourse pour voir le guide complet et contacter des alumni.
         </p>
       </div>
 
       {/* Filtres rapides */}
-      <div className="flex items-center gap-3 mb-8 flex-wrap">
-        <span className="text-sm text-orange-700 font-medium">Filtrer :</span>
+      <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-6 md:mb-8">
+        <span className="text-xs md:text-sm text-orange-700 font-medium">Filtrer :</span>
         {['Tous', 'Concours', 'Dossier', 'Master', 'Doctorat'].map(f => (
           <span
             key={f}
-            className="bg-white border border-orange-200 text-orange-700 text-sm px-3 py-1 rounded-full cursor-pointer hover:bg-orange-50 transition"
+            className="bg-white border border-orange-200 text-orange-700 text-xs md:text-sm px-2 md:px-3 py-1 rounded-full cursor-pointer hover:bg-orange-50 transition"
           >
             {f}
           </span>
@@ -71,29 +71,29 @@ export default async function BourseListePage() {
       </div>
 
       {/* Liste */}
-      <div className="space-y-4">
+      <div className="space-y-3 md:space-y-4">
         {bourses?.map((bourse: Bourse) => {
           const days = getDaysLeft(bourse.date_cloture)
           return (
             <Link
               key={bourse.id}
               href={`/bourses/${bourse.id}`}
-              className="block bg-white rounded-2xl p-6 border border-orange-100 hover:border-orange-300 hover:shadow-sm transition group"
+              className="block bg-white rounded-2xl p-4 md:p-6 border border-orange-100 hover:border-orange-300 hover:shadow-sm transition group"
             >
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex items-start gap-4 flex-1">
-                  <div className="text-3xl">
+              <div className="flex flex-col md:flex-row md:items-start gap-4">
+                <div className="flex items-start gap-3 md:gap-4 flex-1">
+                  <div className="text-2xl md:text-3xl">
                     {paysFlags[bourse.pays ?? ''] ?? '🌐'}
                   </div>
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-1 flex-wrap">
-                      <h2 className="font-semibold text-orange-900 group-hover:text-orange-600 transition">
+                    <div className="flex items-center gap-2 md:gap-3 mb-1 flex-wrap">
+                      <h2 className="font-semibold text-orange-900 group-hover:text-orange-600 transition text-sm md:text-base">
                         {bourse.nom}
                       </h2>
                       <StatusBadge days={days} />
                     </div>
-                    <p className="text-sm text-orange-600 mb-2">{bourse.organisme} • {bourse.pays}</p>
-                    <p className="text-sm text-orange-700 line-clamp-2 mb-3">{bourse.description}</p>
+                    <p className="text-xs md:text-sm text-orange-600 mb-2">{bourse.organisme} • {bourse.pays}</p>
+                    <p className="text-xs md:text-sm text-orange-700 line-clamp-2 mb-3">{bourse.description}</p>
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className={`text-xs px-2 py-1 rounded-full ${
                         bourse.type === 'concours'
@@ -110,7 +110,7 @@ export default async function BourseListePage() {
                     </div>
                   </div>
                 </div>
-                <div className="text-right text-sm text-orange-500 shrink-0">
+                <div className="text-left md:text-right text-xs md:text-sm text-orange-500 shrink-0 mt-3 md:mt-0">
                   {bourse.date_cloture && (
                     <div>
                       <div className="text-xs text-orange-400 mb-1">Clôture</div>

@@ -5,6 +5,10 @@ import Navbar from '@/components/layout/Navbar'
 export const metadata: Metadata = {
   title: 'CRIO — Plateforme d\'apprentissage',
   description: 'Apprends les métiers du digital, gratuitement.',
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({
